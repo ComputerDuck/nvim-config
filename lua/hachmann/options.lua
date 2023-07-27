@@ -18,9 +18,9 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
-vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
+vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "80"
 if vim.bo.filetype == "text" then
     vim.opt_local.wrap = true
@@ -31,7 +31,7 @@ vim.opt.timeoutlen=1000
 vim.opt.ttimeoutlen=100
 vim.opt.updatetime = 750
 
-vim.opt.formatoptions:remove({ "c", "r", "o" })        -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
+vim.opt.formatoptions:remove({ "c", "r", "o" }) -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
 vim.opt.runtimepath:remove("/usr/share/vim/vimfiles")
 
 vim.opt.undofile = true
