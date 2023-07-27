@@ -25,3 +25,6 @@ vim.keymap.set("v", ">", ">gv", {noremap = true, silent = true })
 vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv", {noremap = true, silent = true})
 vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", {noremap = true, silent = true})
 
+vim.keymap.set("n", "<leader><S-CR>", "A<CR><ESC>", {noremap = true, silent = true})
+vim.keymap.set("n", "<leader><CR>", "i<CR><ESC>", {noremap = true, silent = true})
+
