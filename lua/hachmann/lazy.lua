@@ -26,18 +26,11 @@ return lazy.setup({
     {
         'sainnhe/gruvbox-material',
         config = function()
-            vim.opt.background= 'dark'
-
-            vim.g.gruvbox_material_background = 'hard'
-            vim.g.gruvbox_material_foreground = 'original'
-            vim.g.gruvbox_material_better_performance = 1
-
-            vim.cmd([[colorscheme gruvbox-material]])
+            vim.cmd.colorscheme('gruvbox-material')
         end,
     },
 
 
-    'nvim-lua/plenary.nvim',
     'itchyny/lightline.vim',
     'theprimeagen/harpoon',
     'numToStr/Comment.nvim',
