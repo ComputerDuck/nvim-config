@@ -35,6 +35,7 @@ return lazy.setup({
     'theprimeagen/harpoon',
     'numToStr/Comment.nvim',
     'RRethy/vim-illuminate',
+    'lukas-reineke/indent-blankline.nvim',
     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate', },
     { "jake-stewart/jfind.nvim", branch = "1.0", },
     {
