@@ -27,8 +27,8 @@ vim.opt.colorcolumn = "80"
 if vim.bo.filetype == "text" then
     vim.opt_local.wrap = true
     vim.opt_local.linebreak = true
-else 
-    vim.opt_local.warp = false
+else
+    vim.opt_local.wrap = false
     vim.opt_local.linebreak = false
 end
 
