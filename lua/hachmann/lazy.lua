@@ -23,15 +23,6 @@ return lazy.setup({
         lazy = true,
     },
 
-    {
-        'sainnhe/gruvbox-material',
-        config = function()
-            vim.cmd.colorscheme('gruvbox-material')
-        end,
-    },
-
-
-    'itchyny/lightline.vim',
     'theprimeagen/harpoon',
     'numToStr/Comment.nvim',
     'RRethy/vim-illuminate',
@@ -40,8 +31,10 @@ return lazy.setup({
     { "jake-stewart/jfind.nvim", branch = "1.0", },
     {
        'j-hui/fidget.nvim',
-        config = function() require("fidget").setup() end,
         tag = 'legacy',
+        config = function()
+            require("fidget").setup{ window = { blend = 0 }}
+        end,
     },
 
     'jose-elias-alvarez/null-ls.nvim', -- formatters and linters
@@ -57,7 +50,7 @@ return lazy.setup({
             },
 
             {'neovim/nvim-lspconfig'},
-            {'williamboman/mason-lspconfig.nvim'}, 
+            {'williamboman/mason-lspconfig.nvim'},
             {'hrsh7th/nvim-cmp'},
             {'hrsh7th/cmp-nvim-lsp'},
             {'L3MON4D3/LuaSnip'},
@@ -66,4 +59,11 @@ return lazy.setup({
         },
 	},
 
+    -- colorschemes    
+    'sainnhe/gruvbox-material',
+    'arturgoms/moonbow.nvim',
+    'folke/tokyonight.nvim',
+    'Shatur/neovim-ayu',
+
+    'itchyny/lightline.vim',
 })

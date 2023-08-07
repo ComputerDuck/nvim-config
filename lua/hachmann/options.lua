@@ -1,3 +1,5 @@
+vim.g.c_syntax_for_h = 1
+
 vim.opt.guicursor = ""
 vim.opt.showmode = false
 
@@ -24,7 +26,10 @@ vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "80"
 if vim.bo.filetype == "text" then
     vim.opt_local.wrap = true
-    vim.opt.linebreak = true
+    vim.opt_local.linebreak = true
+else
+    vim.opt_local.wrap = false
+    vim.opt_local.linebreak = false
 end
 
 vim.opt.timeoutlen=1000
