@@ -7,7 +7,9 @@ vim.g.maplocalleader = ' '
 
 -- in normal mode, when leader t is pressed, open vim file manager
 vim.keymap.set("n", "<leader>t", vim.cmd.Ex)
-vim.keymap.set("n", "<leader>b", vim.cmd.bp)
+vim.keymap.set("n", "<leader>B", vim.cmd.bp)
+vim.keymap.set("n", "<leader>N", vim.cmd.bn)
+vim.keymap.set("n", "<leader>b", vim.cmd.ls)
 
 vim.keymap.set("n", "<leader>w", vim.cmd.wq)
 

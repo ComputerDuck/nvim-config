@@ -23,7 +23,6 @@ return lazy.setup({
         lazy = true,
     },
 
-    'itchyny/lightline.vim',
     'theprimeagen/harpoon',
     'numToStr/Comment.nvim',
     'RRethy/vim-illuminate',
@@ -65,5 +64,5 @@ return lazy.setup({
     'folke/tokyonight.nvim',
     'Shatur/neovim-ayu',
 
-
+    'itchyny/lightline.vim',
 })
