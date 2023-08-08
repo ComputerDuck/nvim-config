@@ -11,9 +11,7 @@ lsp.ensure_installed({
 	'lua_ls', -- lua
 	'rust_analyzer', -- rust
 	'clangd', -- c and c++
-	'gopls', -- go
 	'bashls', -- bash
-	'cmake', -- cmake
 	'pyright', -- python
 })
 lsp.nvim_workspace()

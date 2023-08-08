@@ -37,7 +37,6 @@ vim.opt.ttimeoutlen=100
 vim.opt.updatetime = 750
 
 vim.opt.formatoptions:remove({ "c", "r", "o" }) -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
-vim.opt.runtimepath:remove("/usr/share/vim/vimfiles")
 
 vim.opt.undofile = true
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = '~/.vim/undodir'
