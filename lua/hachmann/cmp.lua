@@ -28,7 +28,6 @@ cmp.setup({
   }, {
     { name = 'buffer' },
   }),
-  
 
   window = {
     completion = {
@@ -52,12 +51,13 @@ cmp.setup({
         luasnip = "[snippet]",
         nvim_lua = "[lua]",
       })[entry.source.name] or "[*]"
-      
+
       -- Keep the kind as text only - no icons
       -- This will use your colorscheme's syntax highlighting colors
       vim_item.kind = vim_item.kind
-      
+
       return vim_item
     end
   },
 })
+

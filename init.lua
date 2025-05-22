@@ -6,13 +6,14 @@
 if vim.loader then vim.loader.enable() end
 require("hachmann.opt")
 require("hachmann.lazy")
+require("hachmann.remap")
 
 -- Use this while cmp throws deprecated error / client.is_stopped
 vim.deprecate = function() end
 
-require("hachmann.remap")
 require("hachmann.cmp")
 require("hachmann.guard")
+require("hachmann.harpoon")
 
 require("hachmann.lsp")
-vim.lsp.enable({"lua_ls", "clangd"})
+vim.lsp.enable({"lua_ls", "clangd", "rust-analyzer"})
