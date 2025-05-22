@@ -1,68 +1,27 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+	if vim.v.shell_error ~= 0 then
+		vim.api.nvim_echo({
+			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+			{ out, "WarningMsg" },
+			{ "\nPress any key to exit..." },
+		}, true, {})
+		vim.fn.getchar()
+		os.exit(1)
+	end
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Use a protected call so we don't error out on first use
-local status_ok, lazy = pcall(require, "lazy")
-if not status_ok then
-	return
-end
-
-
-return lazy.setup({
-    defaults = {
-        lazy = true,
-    },
-
-    'theprimeagen/harpoon',
-    'numToStr/Comment.nvim',
-    'RRethy/vim-illuminate',
-    { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate', },
-    { "jake-stewart/jfind.nvim", branch = "1.0", },
-    {
-       'j-hui/fidget.nvim',
-        tag = 'legacy',
-        config = function()
-            require("fidget").setup{ window = { blend = 0 }}
-        end,
-    },
-
-    'jose-elias-alvarez/null-ls.nvim', -- formatters and linters
-    {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v2.x',
-        dependencies = {
-            {
-                'williamboman/mason.nvim',
-                build = function()
-                    pcall(vim.cmd, 'MasonUpdate')
-                end,
-            },
-
-            {'neovim/nvim-lspconfig'},
-            {'williamboman/mason-lspconfig.nvim'},
-            {'hrsh7th/nvim-cmp'},
-            {'hrsh7th/cmp-nvim-lsp'},
-            {'L3MON4D3/LuaSnip'},
-            {'hrsh7th/cmp-buffer'},
-            {'hrsh7th/cmp-path'},
-        },
+require("lazy").setup({
+	spec = {
+		-- import your plugins
+		{ import = "plugins" },
 	},
-
-    -- colorschemes    
-    'sainnhe/gruvbox-material',
-    'arturgoms/moonbow.nvim',
-    'folke/tokyonight.nvim',
-    'Shatur/neovim-ayu',
-
-    'itchyny/lightline.vim',
+	-- Configure any other settings here. See the documentation for more details.
+	-- colorscheme that will be used when installing plugins.
+	install = { colorscheme = { "gruvbox" } },
+	-- automatically check for plugin updates
+	checker = { enabled = true },
 })
