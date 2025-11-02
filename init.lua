@@ -12,9 +12,10 @@ require("hachmann.remap")
 vim.deprecate = function() end
 
 require("hachmann.cmp")
-require("hachmann.guard")
 require("hachmann.harpoon")
 require("hachmann.treesitter")
 
 require("hachmann.lsp")
-vim.lsp.enable({"lua_ls", "clangd", "rust-analyzer", "zls", "markdown-oxide"})
+-- vim.lsp.enable({"lua_ls", "clangd", "rust-analyzer", "zls", "markdown-oxide", "bash-language-server", "pyright", "json_ls", "ansible-lint"})
+
+require("hachmann.format")

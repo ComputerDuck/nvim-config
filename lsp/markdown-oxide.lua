@@ -1,4 +1,4 @@
 return {
   cmd = { 'markdown-oxide' },
-  filetypes = { 'markdown', 'adoc' },
+  filetypes = { 'md', 'adoc' },
 }

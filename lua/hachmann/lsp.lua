@@ -1,23 +1,22 @@
--- Defined in init.lua
 vim.lsp.config("*", {
-	capabilities = {
-		textDocument = {
-			semanticTokens = {
-				multilineTokenSupport = true,
-			},
-		},
-	},
-	root_markers = { ".git" },
+    capabilities = {
+        textDocument = {
+            semanticTokens = {
+                multilineTokenSupport = true,
+            },
+        },
+    },
+    root_markers = { ".git" },
 })
 
 vim.diagnostic.config({
-	virtual_text = {
-		prefix = "●",
-		source = "always",
-	},
-	float = {
-		source = "always",
-	},
+    virtual_text = {
+        prefix = "●",
+        source = "always",
+    },
+    float = {
+        source = "always",
+    },
 })
 
 vim.cmd([[
@@ -29,32 +28,41 @@ vim.cmd([[
   "highlight @lsp.type.macro guifg=#83a598
 ]])
 
-local function on_lsp_attach()
-	vim.lsp.buf.document_highlight()
-	vim.api.nvim_buf_set_keymap(
-		0,
-		"n",
-		"<leader>vd",
-		':lua vim.diagnostic.open_float({ border = "rounded", source = "always", focusable = false })<CR>',
-		{ noremap = true, silent = true }
-	)
-	vim.api.nvim_buf_set_keymap(
-		0,
-		"n",
-		"gd",
-		"<cmd>lua vim.lsp.buf.definition()<CR>",
-		{ noremap = true, silent = true }
-	)
-	vim.api.nvim_buf_set_keymap(
-		0,
-		"n",
-		"gD",
-		"<cmd>lua vim.lsp.buf.declaration()<CR>",
-		{ noremap = true, silent = true }
-	)
+local function on_lsp_attach(args)
+    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+    if client.supports_method('textDocument/documentHighlight') then
+        vim.lsp.buf.document_highlight()
+    end
+    vim.keymap.set(
+        "n",
+        "<leader>vd",
+        function()
+            vim.diagnostic.open_float({ border = "rounded", source = "always", focusable = false })
+        end,
+        { buffer = true }
+    )
+    vim.keymap.set(
+        "n",
+        "gd",
+        vim.lsp.buf.definition,
+        { buffer = true }
+    )
+    vim.keymap.set(
+        "n",
+        "gD",
+        vim.lsp.buf.declaration,
+        { buffer = true }
+    )
 end
 
 -- Set up autocommand to call the function when an LSP attaches to a buffer
 vim.api.nvim_create_autocmd("LspAttach", {
-	callback = on_lsp_attach,
+    callback = on_lsp_attach,
 })
+
+vim.keymap.set(
+    "n",
+    "F",
+    vim.lsp.buf.format,
+    { buffer = true }
+)

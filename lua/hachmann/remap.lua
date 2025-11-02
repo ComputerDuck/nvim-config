@@ -1,5 +1,3 @@
-vim.keymap.set("n", "<leader>f", ":Guard fmt<CR>", { noremap = true, silent = true })
-
 -- Visual --
 -- Stay in indent mode
 vim.keymap.set("v", "<", "<gv", { noremap = true, silent = true })
